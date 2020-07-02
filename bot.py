@@ -29,6 +29,17 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+    
+    colors = [
+            0x000000,
+            0x0000FF,
+            0x00FF00,
+            0x00FFFF,
+            0xFF0000,
+            0xFF00FF,
+            0xFFFF00,
+            0xFFFFFF
+            ]
 
     channel = client.get_channel(FEEDBACK_CHANNEL)
     user = client.get_user(ADMIN_ID)
@@ -36,7 +47,7 @@ async def on_message(message):
         if len(message.attachments) == 0:
             return
         global MSG_CNT
-        embed=discord.Embed(title="Anonymous", description="#"+str(MSG_CNT)+"\n"+message.content, color=0xFFFF00)
+        embed=discord.Embed(title="Anonymous", description="#"+str(MSG_CNT)+"\n"+message.content, color=random.choice(colors))
         MSG_CNT += 1
         await user.send(str(message.author))
         await channel.send(embed=embed.set_image(url=message.attachments[0].url))
