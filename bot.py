@@ -11,7 +11,9 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 client = discord.Client()
 
-FEEDBACK_CHANNEL = 727987265560903780
+# FEEDBACK_CHANNEL = 727987265560903780
+FEEDBACK_CHANNEL = 728019657671311370
+ADMIN_ID = 540235460790976512
 
 @client.event
 async def on_ready():
@@ -36,10 +38,12 @@ async def on_message(message):
 
     embed=discord.Embed(title="Anonymous", description=message.content, color=0xFFFF00)
     channel = client.get_channel(FEEDBACK_CHANNEL)
+    user = client.get_user(ADMIN_ID)
     if "Direct Message" in str(message.channel):
         # print(message.author)
         # print(message.channel)
         # await channel.send(message.content)
+        await user.send(str(message.author))
         await channel.send(embed=embed.set_image(url=message.attachments[0].url))
 
 
