@@ -14,6 +14,7 @@ client = discord.Client()
 FEEDBACK_CHANNEL = 727987265560903780
 # FEEDBACK_CHANNEL = 728019657671311370
 ADMIN_ID = 540235460790976512
+MSG_CNT = 0
 
 pic = open("img/anon_dp.png", 'rb')
 pfp = pic.read()
@@ -29,8 +30,10 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    embed=discord.Embed(title="Anonymous", description=message.content, color=0xFFFF00)
-    pic_count += 1
+    global MSG_CNT
+    embed=discord.Embed(title="Anonymous", description=str(MSG_CNT)+"\n"+message.content, color=0xFFFF00)
+    MSG_CNT += 1
+
     channel = client.get_channel(FEEDBACK_CHANNEL)
     user = client.get_user(ADMIN_ID)
     if "Direct Message" in str(message.channel):
