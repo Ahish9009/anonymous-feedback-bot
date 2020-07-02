@@ -41,7 +41,7 @@ async def on_message(message):
             0xFFFFFF
             ]
 
-    if "TEST9009" in msg.content:
+    if "TEST9009" in message.content:
         channel = client.get_channel(TEST_FEEDBACK_CHANNEL)
     else:
         channel = client.get_channel(FEEDBACK_CHANNEL)
