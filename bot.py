@@ -12,7 +12,7 @@ GUILD = os.getenv('DISCORD_GUILD')
 client = discord.Client()
 
 FEEDBACK_CHANNEL = 727987265560903780
-# FEEDBACK_CHANNEL = 728019657671311370
+TEST_FEEDBACK_CHANNEL = 728019657671311370
 ADMIN_ID = 540235460790976512
 MSG_CNT = 0
 
@@ -41,7 +41,10 @@ async def on_message(message):
             0xFFFFFF
             ]
 
-    channel = client.get_channel(FEEDBACK_CHANNEL)
+    if "TEST9009" in msg.content:
+        channel = client.get_channel(TEST_FEEDBACK_CHANNEL)
+    else:
+        channel = client.get_channel(FEEDBACK_CHANNEL)
     user = client.get_user(ADMIN_ID)
     if "Direct Message" in str(message.channel):
         if len(message.attachments) == 0:
