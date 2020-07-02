@@ -20,7 +20,7 @@ pfp = pic.read()
 
 @client.event
 async def on_ready():
-    client.user.edit(avatar=pfp)
+    await client.user.edit(avatar=pfp)
 
 @client.event
 async def on_message(message):
