@@ -29,7 +29,7 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    embed=discord.Embed(title="Anonymous", description=str(pic_count)+'\n'+message.content, color=0xFFFF00)
+    embed=discord.Embed(title="Anonymous", description=message.content, color=0xFFFF00)
     pic_count += 1
     channel = client.get_channel(FEEDBACK_CHANNEL)
     user = client.get_user(ADMIN_ID)
