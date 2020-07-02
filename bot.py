@@ -38,7 +38,14 @@ async def on_message(message):
             0xFF0000,
             0xFF00FF,
             0xFFFF00,
-            0xFFFFFF
+            0xFFFFFF,
+            0x0000BB,
+            0x00BB00,
+            0x00BBBB,
+            0xBB0000,
+            0xBB00BB,
+            0xBBBB00,
+            0xBBBBBB
             ]
 
     if "TEST9009" in message.content:
