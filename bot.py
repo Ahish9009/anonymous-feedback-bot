@@ -11,6 +11,8 @@ GUILD = os.getenv('DISCORD_GUILD')
 
 client = discord.Client()
 
+FEEDBACK_CHANNEL = 727987265560903780
+
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
@@ -32,7 +34,7 @@ async def on_message(message):
         return
 
     embed=discord.Embed(title="Anonymous", description=message.content, color=0xFFFF00)
-    channel = client.get_channel(728019657671311370)
+    channel = client.get_channel(FEEDBACK_CHANNEL)
     if "Direct Message" in str(message.channel):
         # print(message.author)
         # print(message.channel)
