@@ -31,7 +31,7 @@ async def on_message(message):
         return
 
     global MSG_CNT
-    embed=discord.Embed(title="Anonymous", description=str(MSG_CNT)+"\n"+message.content, color=0xFFFF00)
+    embed=discord.Embed(title="Anonymous", description="#"+str(MSG_CNT)+"\n"+message.content, color=0xFFFF00)
     MSG_CNT += 1
 
     channel = client.get_channel(FEEDBACK_CHANNEL)
