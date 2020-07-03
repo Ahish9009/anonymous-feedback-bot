@@ -60,7 +60,7 @@ async def on_message(message):
         embed=discord.Embed(title="Anonymous", description="#"+str(MSG_CNT)+"\n"+message.content, color=random.choice(colors))
         MSG_CNT += 1
         await user.send("Sent by: "+str(message.author))
-        await channel.send(embed=embed.set_image(url=message.attachments[0].url))
+        await channel.send("#"+str(MSG_CNT), embed=embed.set_image(url=message.attachments[0].url))
 
 
 client.run(TOKEN)
