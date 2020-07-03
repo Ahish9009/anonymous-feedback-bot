@@ -57,10 +57,11 @@ async def on_message(message):
         if len(message.attachments) == 0:
             return
         global MSG_CNT
-        embed=discord.Embed(title="Anonymous", description="#"+str(MSG_CNT)+"\n"+message.content, color=random.choice(colors))
-        MSG_CNT += 1
+        embed = discord.Embed(title="Anonymous", description="#"+str(MSG_CNT)+"\n"+message.content, color=random.choice(colors))
         await user.send("Sent by: "+str(message.author))
         await channel.send("#"+str(MSG_CNT), embed=embed.set_image(url=message.attachments[0].url))
+
+        MSG_CNT += 1
 
 
 client.run(TOKEN)
