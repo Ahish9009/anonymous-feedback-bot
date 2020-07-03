@@ -1,14 +1,10 @@
 import os
 import random, discord
-
 from discord.ext import commands
-from dotenv import load_dotenv
-
-load_dotenv()
-TOKEN = os.getenv('DISCORD_TOKEN')
 
 client = discord.Client()
 
+TOKEN = os.getenv('DISCORD_TOKEN')
 FEEDBACK_CHANNEL = int(os.getenv('TARGET_CHANNEL'))
 TEST_FEEDBACK_CHANNEL = int(os.getenv('TEST_CHANNEL'))
 ADMIN_ID = int(os.getenv('ADMIN_ID')) 
