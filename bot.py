@@ -1,25 +1,22 @@
 import os
-import random
+import random, discord
 
-import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
-GUILD = os.getenv('DISCORD_GUILD')
 
 client = discord.Client()
 
-FEEDBACK_CHANNEL = 727987265560903780
-TEST_FEEDBACK_CHANNEL = 728019657671311370
-ADMIN_ID = 540235460790976512
+FEEDBACK_CHANNEL = int(os.getenv('TARGET_CHANNEL'))
+TEST_FEEDBACK_CHANNEL = int(os.getenv('TEST_CHANNEL'))
+ADMIN_ID = int(os.getenv('ADMIN_ID')) 
+TEST_TOKEN = os.getenv('TEST_TOKEN')
 MSG_CNT = 0
 
 pic = open("img/anon_dp.png", 'rb')
 pfp = pic.read()
-
-pic_count = 0
 
 @client.event
 async def on_ready():
@@ -48,7 +45,7 @@ async def on_message(message):
             0xBBBBBB
             ]
 
-    if "TEST9009" in message.content:
+    if TEST_TOKEN in message.content:
         channel = client.get_channel(TEST_FEEDBACK_CHANNEL)
     else:
         channel = client.get_channel(FEEDBACK_CHANNEL)
@@ -59,9 +56,9 @@ async def on_message(message):
         global MSG_CNT
         embed = discord.Embed(title="Anonymous", description="#"+str(MSG_CNT)+"\n"+message.content, color=random.choice(colors))
         await user.send("Sent by: "+str(message.author))
-        await channel.send("#"+str(MSG_CNT), embed=embed.set_image(url=message.attachments[0].url))
+        for i in range(len(message.attachments)):
+            await channel.send("#"+str(MSG_CNT+i), embed=embed.set_image(url=message.attachments[i].url))
 
-        MSG_CNT += 1
-
+        MSG_CNT += len(message.attachments)
 
 client.run(TOKEN)
