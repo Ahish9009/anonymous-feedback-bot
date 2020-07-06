@@ -45,7 +45,6 @@ async def on_message(message):
         channel = client.get_channel(TEST_FEEDBACK_CHANNEL)
     else:
         channel = client.get_channel(FEEDBACK_CHANNEL)
-    user = client.get_user(ADMIN_ID)
 
     if "Direct Message" in str(message.channel):
         if len(message.attachments) == 0:
@@ -54,7 +53,6 @@ async def on_message(message):
         global MSG_CNT
 
         embed = discord.Embed(title="Anonymous", description="#"+str(MSG_CNT)+"\n"+message.content, color=random.choice(colors))
-        await user.send("Sent by: "+str(message.author))
         for i in range(len(message.attachments)):
             await channel.send("#"+str(MSG_CNT+i), embed=embed.set_image(url=message.attachments[i].url))
 
